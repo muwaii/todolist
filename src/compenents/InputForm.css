@@ -1,9 +1,11 @@
-form {
+.input-form {
+    background-color: aqua;
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 20px;
 }
 
 input {
-    width: 70%;
+    width: 570px;
 }

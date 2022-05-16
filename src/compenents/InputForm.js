@@ -2,8 +2,8 @@ import './InputForm.css'
 
 function InputForm(props) {
     return (
-        <div className="input-form">
-            <form onSubmit={props.onSubmit}>
+        <div className="input-form-container">
+            <form onSubmit={props.onSubmit} className='input-form'>
                 <input
                     type="text"
                     placeholder="Add your todo here!"
