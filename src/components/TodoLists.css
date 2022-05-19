@@ -1,0 +1,82 @@
+.todo-list-box {
+    display: flex;
+    /* background-color: #CEBC81; */
+    /* border: 1px solid blue; */
+    border-bottom: 1px solid #d0d0d0;
+
+    box-sizing: border-box;
+    justify-content: center;
+    padding: 2px;
+    margin: 15px 0;
+}
+
+.list {
+    margin-bottom: 15px;
+}
+
+.item {
+    display: block;
+    /* background-color: black; */
+    box-sizing: border-box;
+}
+
+.item-1 {
+    width: 4.16%;
+    padding-left: -4px;
+    text-align: center;
+    padding-top: 2px;
+}
+
+.item-2 {
+    width: 1.16%;
+    text-align: center;
+}
+
+.item-3 {
+    width: 86.33%;
+    padding-left: 6px;
+    padding-right: 8px;
+    /* background-color: rgb(159, 167, 182); */
+    word-wrap: break-word;
+    justify-content: center;
+
+}
+
+.item-4 {
+    width: 8.33%;
+    text-align: center;
+    margin: 0 auto;
+    padding-top: 2px;
+
+    display: flex;
+    justify-content: center;
+}
+
+.done-but {
+    cursor: pointer;
+    margin-top: 1px;
+}
+
+.edit-but {
+    cursor: pointer;
+    margin-right: 18px;
+    margin-top: 1px;
+    color: rgba(0, 98, 255, 0.751);
+}
+
+.edit-but:hover {
+    color: rgb(0, 98, 255);
+    font-size: 22px;
+}
+
+.delete-button {
+    cursor: pointer;
+    margin-right: 13px;
+    color: rgba(255, 0, 0, 0.602);
+}
+
+.delete-button:hover {
+    color: red;
+    font-size: 22px;
+}
+

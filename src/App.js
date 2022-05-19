@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import './App.css';
-import InputForm from './compenents/InputForm';
-import TodoLists from './compenents/TodoLists';
+import InputForm from './components/InputForm';
+import TodoLists from './components/TodoLists';
+import Alert from './components/Alert.js';
 
 function App() {
   // ------- state -------
@@ -9,8 +10,8 @@ function App() {
   const [todoLists, setTodoLists] = useState([]);
   const [editID, setEditID] = useState(null);
   const [editPopupInput, setEditPopupInput] = useState('');
-  const [alerMessage, setAlertMessage] = useState('');
-
+  const [alertMessage, setAlertMessage] = useState('Welcome');
+  const [alertToggle, setAlertToggle] = useState(false);
 
   // ------- function -------
   function onInputChange(event) {
@@ -21,21 +22,21 @@ function App() {
     setEditPopupInput(event.target.value)
   }
 
-
   // --- add todo ---
   function onSubmit(event) {
     event.preventDefault()
     if(!todo) {   
-      alertToast("nooooo");
+      setAlertMessage('Please fill out this field');
+      setAlertToggle((prev) => !prev)
     }
     else { 
       const newTodoLists = { id: new Date().getTime().toString(), title: todo }
       setTodoLists([newTodoLists, ...todoLists])
       setTodo('')
-      alertToast("added");
+      setAlertMessage('Added');
+      setAlertToggle((prev) => !prev)
     }
   }
-  
 
   // --- edit todo ------------------------------------------------
   function onEdit(id) {
@@ -59,7 +60,8 @@ function App() {
       })
     })
     setEditID(null)
-    alertToast('editttt');
+    setAlertMessage('Edited');
+    setAlertToggle((prev) => !prev)
   }
 
   let editElement = null
@@ -85,33 +87,22 @@ function App() {
     )
   }
 
-
   // --- delete todo ---
   function onDelete(id) {
+
     setTodoLists((prevList) => {
       return prevList.filter((list) => {
         return list.id !== id;
       });
     })
-    alertToast('deleteeeee');
+    setAlertMessage('Deleted');
+    setAlertToggle((prev) => !prev)
   }
-
-
-  // alert function
-    function alertToast(alertMsg) {
-      setAlertMessage(alertMsg)
-      var x = document.getElementById('alert-ele');
-      x.className = "show";
-
-        setTimeout(() => { 
-          x.className = x.className.replace("show", ""); 
-        }, 3000);
-    }
-
 
   return (
     <div className="App">
       <section>
+        <h1 className='todolist-header'>Todolist</h1>
         <InputForm 
           todo={todo}
           onInputChangeFunction={onInputChange} 
@@ -124,7 +115,7 @@ function App() {
         />
       </section>
       {editElement}
-      <div id='alert-ele'>{alerMessage}</div>
+      <Alert alertMsg={alertMessage} alertToggle={alertToggle} todoLists={todoLists} />
     </div>
   );
 }
