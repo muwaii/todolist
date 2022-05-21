@@ -7,11 +7,10 @@
     box-sizing: border-box;
     justify-content: center;
     padding: 2px;
-    margin: 15px 0;
-}
+    margin: 15px 0 8px 0;
 
-.list {
-    margin-bottom: 15px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 200;
 }
 
 .item {
@@ -27,15 +26,11 @@
     padding-top: 2px;
 }
 
-.item-2 {
-    width: 1.16%;
-    text-align: center;
-}
-
 .item-3 {
     width: 86.33%;
     padding-left: 6px;
-    padding-right: 8px;
+    margin-right: 10px;
+    margin-bottom: 15px;
     /* background-color: rgb(159, 167, 182); */
     word-wrap: break-word;
     justify-content: center;
@@ -46,7 +41,7 @@
     width: 8.33%;
     text-align: center;
     margin: 0 auto;
-    padding-top: 2px;
+    padding-top: 3px;
 
     display: flex;
     justify-content: center;
@@ -54,24 +49,28 @@
 
 .done-but {
     cursor: pointer;
-    margin-top: 1px;
+    font-size: 18px;
+}
+
+.done-but:hover {
+    color: #f33152;
 }
 
 .edit-but {
     cursor: pointer;
-    margin-right: 18px;
+    margin-right: 9px;
     margin-top: 1px;
-    color: rgba(0, 98, 255, 0.751);
+    color: rgba(61, 79, 108, 0.773);
 }
 
 .edit-but:hover {
-    color: rgb(0, 98, 255);
+    color: rgba(49, 63, 86, 0.773);
     font-size: 22px;
 }
 
 .delete-button {
+    margin-right: 2px;
     cursor: pointer;
-    margin-right: 13px;
     color: rgba(148, 0, 0, 0.602);
 }
 
@@ -82,7 +81,10 @@
 
 .todo-deco {
     text-decoration: line-through;
-    color: rgb(111, 111, 111);
+    color: rgb(129, 129, 129);
 
 }
 
+.done-but-deco {
+    color: #f33152;
+}

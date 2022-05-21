@@ -3,11 +3,12 @@ import './App.css';
 import InputForm from './components/InputForm';
 import TodoLists from './components/TodoLists';
 import Alert from './components/Alert.js';
+import { clear } from '@testing-library/user-event/dist/clear';
 
 function App() {
 
   // --- local storage ---
-  function Storage() {
+  function storage() {
     let todoLists = localStorage.getItem('todoLists');
     if(todoLists) {
       return (todoLists = JSON.parse(localStorage.getItem('todoLists')));
@@ -20,7 +21,7 @@ function App() {
   // state 
   // ---
   const [todo, setTodo] = useState('');
-  const [todoLists, setTodoLists] = useState(Storage());
+  const [todoLists, setTodoLists] = useState(storage());
   const [editID, setEditID] = useState(null);
   const [editPopupInput, setEditPopupInput] = useState('');
   const [alertMessage, setAlertMessage] = useState('Welcome');
@@ -85,7 +86,7 @@ function App() {
           
         </div>
         <form className='edit-form' onSubmit={onEditPopupSubmit}>
-              <div>test</div>
+          <div className='editting-message'>Editting...</div>
               <div className='edit-input-container'>
                 <input 
                   className='edit-input' 
@@ -93,7 +94,7 @@ function App() {
                   value={editPopupInput} 
                   onChange={onEditInputChange}
                 />
-                <button type='submit'>edit</button>
+                <button className='to-edit-btn' type='submit'>Edit</button>
               </div>
           </form>
       </div>
@@ -125,6 +126,12 @@ function App() {
     })
   }
 
+  // --- clear all ---
+  function clearAll() {
+    let cautionMsg = "Would you like to clear todo list ?";
+    if(window.confirm(cautionMsg) === true) setTodoLists([]);
+  }
+
   useEffect(() => {
     localStorage.setItem('todoLists', JSON.stringify(todoLists));
   }, [todoLists]);
@@ -132,7 +139,7 @@ function App() {
   return (
     <div className="App">
       <section>
-        <h1 className='todolist-header'>Todolist</h1>
+        <h1 className='todolist-header'>To do ~</h1>
         <InputForm 
           todo={todo}
           onInputChangeFunction={onInputChange} 
@@ -143,8 +150,13 @@ function App() {
           onDelete={onDelete}
           onEdit={onEdit}
           onTodoDone={onTodoDone}
-          // textStatus={textStatus}
         />
+      { (todoLists.length !== 0) && <div className='clear-container'>
+          <button className='clear-btn' onClick={clearAll}>
+            Clear all
+          </button>
+        </div>
+      }
       </section>
       {editElement}
       <Alert alertMsg={alertMessage} alertToggle={alertToggle} todoLists={todoLists} />

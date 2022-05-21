@@ -1,5 +1,6 @@
 * {
     box-sizing: border-box;
+    /* font-family: 'Inter', sans-serif; */
 }
 
 body {
@@ -10,16 +11,23 @@ body {
 
 section {
     background-color: #f4f5f7;
-    width: 600px;
+    max-width: 600px;
     /* height: 100px; */
     padding: 15px;
-    margin:80px auto 0 auto ;
+    margin: 0 auto 50% auto;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
 }
 
 
 .todolist-header {
-    color: aqua;
+    /* background-color: #f64c4c; */
+    color: #f64c4c;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 30px;
+    margin: 10px 10px 17px 10px ;
+
 }
 
 .todo-title {
@@ -29,7 +37,7 @@ section {
 
 /* edit form popup */
 .edit-form-container {
-    border: 10px solid blue;    
+    /* border: 10px solid blue;     */
 
     display: flex;
     position: fixed;
@@ -42,9 +50,9 @@ section {
 }
 
 .edit-form-bg {
-    border: 10px solid orange;  
-    background-color: rgb(203, 171, 113);
-    opacity: 85%;
+    /* border: 10px solid orange;   */
+    background-color: rgb(139, 134, 134);
+    opacity: 80%;
 
     /* display: flex; */
     /* position: relative; */
@@ -57,18 +65,74 @@ section {
 }
 
 .edit-form {
-    border: 10px solid green; 
-    background-color: greenyellow;  
+    border-top: 38px solid white; 
+    border-radius: 5px;
+    background-color: #f64c4c;  
     position: absolute;
     /* display: block; */
-    width: 50%;
-    height: 30%;
+    width: 70%;
+    height: 23%;
     z-index: 9;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
 
+.editting-message {
+    position: absolute;
+    top: -20%;
+    left: 2%;
+    font-family: 'Inter', sans-serif;
+    color: #f64c4c;
+    
+}
+
+.edit-input-container {
+    padding: 5px;
+    padding-left: 7px;
+    font-size: 18px;
+    border: none;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    top: 30%;
 }
 
 .edit-input {
     width: 80%;
-    height: 27px;
+    height: 35px;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
 }
+
+.to-edit-btn {
+    width: 12%;
+    height: 35px;
+    margin-left: 1.2%;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 17px;
+}
+
+.to-edit-btn:hover {
+    background-color: rgb(189, 189, 189);
+}
+
+.clear-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.clear-btn {
+    background-color: transparent;
+    border: 1px solid #f64c4c;
+    border-radius: 2px;
+    padding: 5px 10px;
+}
+
+.clear-btn:hover {
+    background-color: #f64c4c;
+    color: white;
+}
+
 

@@ -6,11 +6,11 @@ function InputForm(props) {
             <form onSubmit={props.onSubmit} className='input-form'>
                 <input
                     type="text"
-                    placeholder="Add your todo here!"
+                    placeholder="What's your plan?"
                     value={props.todo}
                     onChange={props.onInputChangeFunction}
                 />
-                <button className="add-but" type='submit'>Add</button>
+                <button className="add-but" type='submit'>+</button>
             </form>
         </div>
     )

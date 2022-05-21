@@ -5,13 +5,13 @@
 
     min-width: 250px;
     margin-left: -125px;
-    background-color: #333;
+    background-color: rgb(147, 147, 147);
     color: #fff;
     text-align: center;
     border-radius: 2px;
     padding: 16px;
     left: 50%;
-    bottom: 77%;
+    bottom: 91%;
     font-size: 17px;
 }
 
@@ -22,21 +22,21 @@
 }
 
 @-webkit-keyframes fadein {
-    from {bottom: 77%; opacity: 0;} 
-    to {bottom: 77%; opacity: 1;}
+    from {bottom: 91%; opacity: 0;} 
+    to {bottom: 91%; opacity: 1;}
 }
 
 @keyframes fadein {
-    from {bottom: 77%; opacity: 0;}
-    to {bottom: 77%; opacity: 1;}
+    from {bottom: 91%; opacity: 0;}
+    to {bottom: 91%; opacity: 1;}
 }
 
 @-webkit-keyframes fadeout {
-    from {bottom: 77%; opacity: 1;} 
-    to {bottom: 77%; opacity: 0;}
+    from {bottom: 91%; opacity: 1;} 
+    to {bottom: 91%; opacity: 0;}
 }
 
 @keyframes fadeout {
-    from {bottom: 77%; opacity: 1;}
-    to {bottom: 77%; opacity: 0;}
+    from {bottom: 91%; opacity: 1;}
+    to {bottom: 91%; opacity: 0;}
 }
