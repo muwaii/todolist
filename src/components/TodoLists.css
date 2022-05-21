@@ -72,11 +72,17 @@
 .delete-button {
     cursor: pointer;
     margin-right: 13px;
-    color: rgba(255, 0, 0, 0.602);
+    color: rgba(148, 0, 0, 0.602);
 }
 
 .delete-button:hover {
-    color: red;
+    color: rgb(164, 0, 0);
     font-size: 22px;
+}
+
+.todo-deco {
+    text-decoration: line-through;
+    color: rgb(111, 111, 111);
+
 }
 

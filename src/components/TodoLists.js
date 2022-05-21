@@ -1,18 +1,19 @@
 import './TodoLists.css'
-import { IoCheckmarkCircleOutline, IoMagnet } from "react-icons/io5";
+import { IoCheckmarkCircleOutline, IoCheckmarkCircleSharp } from "react-icons/io5";
 import { FiEdit, FiTrash2 } from "react-icons/fi";
 
 function TodoLists(props) {
+
 
     const todoListsElements = props.todoLists.map((todo) => {
         return (
             <div className='todo-list-box' key={todo.id}>
                 <div className='item item-1'>
                     <div 
-                    className="done-but" 
-                    onClick={() => {props.onDelete(todo.id)}}
+                    className='done-but'
+                    onClick={() => {props.onTodoDone(todo.id)}}
                     >
-                        <IoCheckmarkCircleOutline />
+                        { todo.deco ? <IoCheckmarkCircleSharp /> : <IoCheckmarkCircleOutline /> }
                     </div>    
                 </div>
                 {/* <div className='item item-2'>
@@ -20,7 +21,8 @@ function TodoLists(props) {
                 </div> */}
 
                 <div className='item item-3'>
-                    <div className="list">{todo.title}</div>
+                    <div className={`list  ${ todo.deco ? 'todo-deco' : '' }`}>{todo.title}</div>
+                    {/* <div className={`list  ${props.textStatus}`}>{todo.title}</div> */}
                 </div>
                 
                 <div className='item item-4'>

@@ -1,19 +1,33 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 import InputForm from './components/InputForm';
 import TodoLists from './components/TodoLists';
 import Alert from './components/Alert.js';
 
 function App() {
-  // ------- state -------
+
+  // --- local storage ---
+  function Storage() {
+    let todoLists = localStorage.getItem('todoLists');
+    if(todoLists) {
+      return (todoLists = JSON.parse(localStorage.getItem('todoLists')));
+    }
+    else {
+      return [];
+    }
+  }
+  
+  // state 
+  // ---
   const [todo, setTodo] = useState('');
-  const [todoLists, setTodoLists] = useState([]);
+  const [todoLists, setTodoLists] = useState(Storage());
   const [editID, setEditID] = useState(null);
   const [editPopupInput, setEditPopupInput] = useState('');
   const [alertMessage, setAlertMessage] = useState('Welcome');
   const [alertToggle, setAlertToggle] = useState(false);
 
-  // ------- function -------
+  // function 
+  // ---
   function onInputChange(event) {
     setTodo(event.target.value)
   }
@@ -30,7 +44,7 @@ function App() {
       setAlertToggle((prev) => !prev)
     }
     else { 
-      const newTodoLists = { id: new Date().getTime().toString(), title: todo }
+      const newTodoLists = { id: new Date().getTime().toString(), title: todo, deco: false }
       setTodoLists([newTodoLists, ...todoLists])
       setTodo('')
       setAlertMessage('Added');
@@ -38,7 +52,7 @@ function App() {
     }
   }
 
-  // --- edit todo ------------------------------------------------
+  // --- edit todo ---
   function onEdit(id) {
     const selectedTodo = todoLists.find((selected) => {
       return selected.id === id
@@ -63,7 +77,6 @@ function App() {
     setAlertMessage('Edited');
     setAlertToggle((prev) => !prev)
   }
-
   let editElement = null
   if(editID !== null) {
     editElement = (
@@ -89,7 +102,6 @@ function App() {
 
   // --- delete todo ---
   function onDelete(id) {
-
     setTodoLists((prevList) => {
       return prevList.filter((list) => {
         return list.id !== id;
@@ -98,6 +110,24 @@ function App() {
     setAlertMessage('Deleted');
     setAlertToggle((prev) => !prev)
   }
+
+  // --- done ---
+  function onTodoDone(selectedId) {
+    setTodoLists((prevTodoList) => {            // prevTodoList = array of TodoList
+      return prevTodoList.map((todo) => {       // todo = each object in prevTodoList
+        if(todo.id === selectedId) {
+          return { ...todo, deco: !todo.deco };
+        }
+        else {
+          return todo;
+        }
+      })
+    })
+  }
+
+  useEffect(() => {
+    localStorage.setItem('todoLists', JSON.stringify(todoLists));
+  }, [todoLists]);
 
   return (
     <div className="App">
@@ -112,6 +142,8 @@ function App() {
           todoLists={todoLists}   
           onDelete={onDelete}
           onEdit={onEdit}
+          onTodoDone={onTodoDone}
+          // textStatus={textStatus}
         />
       </section>
       {editElement}
